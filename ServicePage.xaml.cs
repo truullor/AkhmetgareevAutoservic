@@ -23,12 +23,20 @@ namespace AkhmetgareevAutoservic
         public ServicePage()
         {
             InitializeComponent();
+
+            var currentServices = AkhmetgareevAutoserviceEntities.GetContext().Service.ToList();
+            ServiceListView.ItemsSource = currentServices;
         }
 
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new AddEditPage());
+        }
+
+        private void ServiceListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
